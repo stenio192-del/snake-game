@@ -1,13 +1,27 @@
 class SnakeGame {
     constructor() {
+        // Verificar se todos os elementos necessários existem
         this.canvas = document.getElementById('gameCanvas');
+        if (!this.canvas) {
+            throw new Error('Canvas não encontrado!');
+        }
+        
         this.ctx = this.canvas.getContext('2d');
+        if (!this.ctx) {
+            throw new Error('Contexto 2D não disponível!');
+        }
+        
         this.overlay = document.getElementById('gameOverlay');
         this.startButton = document.getElementById('startButton');
         this.currentScoreElement = document.getElementById('current-score');
         this.bestScoreElement = document.getElementById('best-score');
         this.overlayTitle = document.getElementById('overlay-title');
         this.overlayMessage = document.getElementById('overlay-message');
+
+        // Verificar elementos críticos
+        if (!this.overlay || !this.startButton || !this.currentScoreElement || !this.bestScoreElement) {
+            throw new Error('Elementos da interface não encontrados!');
+        }
 
         // Configurações do jogo
         this.gridSize = 20;
@@ -424,5 +438,20 @@ class SnakeGame {
 
 // Inicializar o jogo quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
-    new SnakeGame();
+    try {
+        console.log('Iniciando Snake Game...');
+        new SnakeGame();
+        console.log('Snake Game iniciado com sucesso!');
+    } catch (error) {
+        console.error('Erro ao iniciar Snake Game:', error);
+        // Fallback: tentar inicializar após um pequeno delay
+        setTimeout(() => {
+            try {
+                console.log('Tentando inicializar novamente...');
+                new SnakeGame();
+            } catch (retryError) {
+                console.error('Erro na segunda tentativa:', retryError);
+            }
+        }, 100);
+    }
 });
