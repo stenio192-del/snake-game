@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🐍 Snake Game</h1>
+            <div class="score-container">
+                <div class="score">
+                    <span class="score-label">Pontuação:</span>
+                    <span id="current-score">0</span>
+                </div>
+                <div class="score">
+                    <span class="score-label">Melhor:</span>
+                    <span id="best-score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-area">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            
+            <div class="game-overlay" id="gameOverlay">
+                <div class="overlay-content">
+                    <h2 id="overlay-title">Snake Game</h2>
+                    <p id="overlay-message">Use as setas do teclado ou gestos para jogar</p>
+                    <button id="startButton" class="game-button">Iniciar Jogo</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-info">
+            <div class="desktop-controls">
+                <h3>🎮 Controles Desktop</h3>
+                <p>Use as setas do teclado para mover a cobra</p>
+            </div>
+            <div class="mobile-controls">
+                <h3>📱 Controles Mobile</h3>
+                <p>Arraste o dedo na tela para direcionar a cobra</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="snake.js"></script>
+</body>
+</html>
